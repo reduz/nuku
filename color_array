@@ -1,0 +1,92 @@
+unit nuku_screen;
+interface
+uses sdl,sdl_video,nukusupl;
+
+const 
+
+      SCREEN_WIDTH  = 320;
+      SCREEN_HEIGHT = 200; 
+
+
+var screen:^SDL_Surface;
+    color_palette:^SDL_ColorArray;
+
+
+function init_screen : boolean;
+
+function fill_screen_with_buffer(var src:Vpage) : boolean;
+
+procedure set_color_palette(color,r,g,b:byte);
+
+implementation
+
+procedure set_color_palette(color,r,g,b:byte);
+begin
+
+        color_palette^[color].r:=r;
+        color_palette^[color].g:=g;
+	color_palette^[color].b:=b;
+end;
+
+function fill_screen_with_buffer(var src:Vpage) : boolean;
+var i:integer;
+    p:pointer;
+    dest:^Vpage;
+begin
+
+	if ( SDL_MUSTLOCK(screen) ) then
+	begin
+
+		if (SDL_LockSurface(screen) < 0) then writeln('PANIC! Cant Lock it! :( ');
+	end;			
+
+	dest:=screen^.pixels;
+
+	for i:=0 to 199 do
+	begin
+	    
+		
+		move(src[320*i],dest^[320*i],320);
+		
+	end;
+
+	if  SDL_MUSTLOCK(screen) then
+
+	begin
+
+		SDL_UnlockSurface(screen);
+	end;
+
+	SDL_SetColors(screen,color_palette^,0,256);
+	SDL_Updaterect(screen,0,0,320,200);
+
+
+end;
+
+
+function init_screen : boolean;
+var result:boolean;
+begin
+
+
+    screen:=SDL_SetVideoMode(SCREEN_WIDTH,SCREEN_HEIGHT,8,SDL_SWSURFACE);
+    if (screen=nil) then 
+    begin
+    
+	writeln('Cant get 320x200');
+	result:=true;
+    end else
+    begin
+
+        result:=false;
+    end;
+
+	getmem(color_palette,256*sizeof(SDL_Color))
+	
+
+    init_screen:=result;
+end;
+
+end.
+
+
