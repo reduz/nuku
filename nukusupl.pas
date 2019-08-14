@@ -75,7 +75,7 @@ Procedure UpDatePal;
 var i:byte;
 Begin
 For i:=0 to 255 do Begin
-SetRGB(i,Vpalette^[i,0],Vpalette^[i,1],Vpalette^[i,2])
+SetRGB(i, Vpalette^[i,0], Vpalette^[i,1], Vpalette^[i,2])
 end;
 
 end;
@@ -471,7 +471,8 @@ Begin
                                    end;
      until PosV>63999; {ya terminamos? (320*200=64000}
      Close(FilePcx); {cerramo el archivo..}
-     writeln('end PCX load..');
+
+     writeln('end PCX load..');
 end;
 
 Procedure ReadPcx(Name:string; var where);

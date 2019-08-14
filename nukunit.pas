@@ -191,11 +191,11 @@ var tiles:^Data;
      letras:^letra_rec;
     fil:file;{ of byte}
       fi:file;
-    {fil2:file of rec_Vec_r;}
+    {fil2:file of rec_Vec_r;}
     fil2:file;
-     {fil3:file of SCD_r;}
+     {fil3:file of SCD_r;}
       fil3:file;
-    {fil4:file of BAD_r;}
+    {fil4:file of BAD_r;}
     fil4:file;
      fs:file;
      vsc:File of Scen;
@@ -3064,7 +3064,7 @@ var i,j,k,l,count:Word;
 		assign(fi,'nukumap.spr');
 	
 		reset(fi,1);
-	    	{if ioresult<>0 then file_error;}
+		{if ioresult<>0 then file_error;}
 		Blockread(Fi,ard^,29602);
 		close(fi);
 		
@@ -3123,11 +3123,11 @@ var i,j,k,l,count:Word;
 		Begin
 	        
 		    {if count=64000 then }
-		    {begin}
+		    {begin}
 	                                       
-			{blockRead(Fil,PAg2^[0,0],1500,tmpsht);}
-                        {count:=0;}
-                    {end;}
+			{blockRead(Fil,PAg2^[0,0],1500,tmpsht);}
+                        {count:=0;}
+                    {end;}
                     Scene^[i,j]:=Vsho(PAg2)^[Count];
                     inc(count);
                 end;
@@ -3139,7 +3139,7 @@ var i,j,k,l,count:Word;
         For i:=0 to 150 do 
 	begin
     
-	for j:=0 to 124 do    
+	for j:=0 to 124 do
 	begin
     	    blockread(fil2,vecprov,5,tmpsht);
 	    vectobj[i].t:=vecprov.t;
@@ -3163,7 +3163,7 @@ var i,j,k,l,count:Word;
 
 	Bguys[i].x:=badprov.x[1];
 	Bguys[i].x:=(bguys[i].x  shl 8) and badprov.x[2];
-	Bguys[i].y:=(badprov.y[0] shl 8) and badprov.y[1];}
+	Bguys[i].y:=(badprov.y[0] shl 8) and badprov.y[1];}
 	{badprov.x:=(badprov.x shl 8) or (badprov.x shr 8);}
 	{badprov.y:=(badprov.y shl 8) or (badprov.y shr 8);}
 	bguys[i]:=badprov;
@@ -4749,10 +4749,10 @@ checkcd;
 
 
 {      copyscr2;}
-{      calcules;} {}
-{      timercount:=0;}
+{      calcules;} {}
+{      timercount:=0;}
       read_keys_from_input();
-{      Sleep(15);}
+{      Sleep(15);}
       {SDL_Delay(25);}
 
 
@@ -4767,7 +4767,7 @@ checkcd;
 
 	cuad:=TTake;
 
-	 Draws;{}
+	 Draws; {}
 		time_delta:=SDL_GetTicks();
 		TTake:=time_delta div frame_msecs;
 		read_keys_from_input();
