@@ -2815,7 +2815,7 @@ end;}
                                   blockread(fs,settings,16);
                                   close(fs);
                                   end else begin
-                                           Writeln('No se encontr¢ NUKU.CFG. Correr SETUP.EXE');
+                                           Writeln('No se encontro nuku.cfg. Correr SETUP.EXE');
                                            halt(1);
                                            end;
 
