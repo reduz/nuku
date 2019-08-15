@@ -102,7 +102,7 @@ For i:=1 to 4 do Begin
                  
 		    read_keys_from_input;	 
 		    SDL_Delay(100);
-                    {BIG TODOODOO!!}
+                    {BIG TODOODOO!!}
                     for j:=0 to 9 do
                     begin
                         whichk:=SDLK_0+j;
