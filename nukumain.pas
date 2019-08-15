@@ -764,7 +764,7 @@ end;
 
 Procedure SaveHighs;
 Begin
-assign(Ftime,'TIEMPOS.TRK');
+assign(Ftime,'tiempos.trk');
 {$i-}
 Rewrite(Ftime);
 if ioresult<>0 then File_Error;
@@ -787,7 +787,7 @@ end;
 Procedure loadHighs;
 Begin
 if not exist ('tiempos.trk') then createtable;
-assign(Ftime,'TIEMPOS.TRK');
+assign(Ftime,'tiempos.trk');
 {$i-}
 Reset(Ftime);
 if ioresult<>0 then File_Error;
