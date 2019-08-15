@@ -1,0 +1,9 @@
+*.a
+*.o
+*.ppu
+*.rsj
+
+nuku
+
+# Should be kept but not modified
+TIEMPOS.TRK
