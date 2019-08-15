@@ -32,7 +32,7 @@ begin
         end;
 
 
-	module := Player_Load(fname, 64, 0);
+	module := Player_Load(fname, 64, False);
        	Player_Start(module);
 
 end;
@@ -53,15 +53,19 @@ initialization
 begin
 
         module:=nil;
+
+	{ load shared library }
+	if (mikmod.LoadMikMod() = False) then
+		writeln('Can''t init mikmod library, missing libmikmod.so.3?');
+
 	{ register all the drivers }
 	mikmod.MikMod_RegisterAllDrivers();
-
 
 	{ register all the module loaders }
 	mikmod.MikMod_RegisterAllLoaders();
 
 	{ initialize the library }
-	md_mode := md_mode or DMODE_SOFT_MUSIC or DMODE_SOFT_SNDFX;
+	md_mode^ := md_mode^ or DMODE_SOFT_MUSIC or DMODE_SOFT_SNDFX;
 	if (mikmod.MikMod_Init('') <> 0) then begin
 	
 		writeln('Cant init!');
